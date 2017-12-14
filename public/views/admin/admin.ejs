@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/styles.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+
+<body>
+        <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header"><a class="navbar-brand navbar-link" href="#">Admin </a>
+                <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+            </div>
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li role="presentation"><a href="#">Polen Ershan</a></li>
+                    <li role="presentation"><a href="/signin">Logout</a></li>
+                   
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <ul class="nav nav-tabs">
+                <li><a href="/products/new">Product Add</a></li>
+                <li><a href="/products/all">Product List</a></li>
+                <li><a href="/product/orders/all">Ordered product</a></li>
+            </ul>
+        </div>
+        <div class="col-md-10 col-md-offset-1">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">New Arrival Product</h3></div>
+                <div class="panel-body"><span></span>
+                <div class="col-md-6 col-md-offset-3">
+                <label for="fname">Product Name</label>
+                        <input type="text" id="pname"  placeholder="Product Name">
+                        
+                        <label for="country">Brand</label>
+                        <select id="brand" name="Brand">
+                            <option value="Select Brand">Select Brand</option>
+                          <option value="apple">apple</option>
+                          <option value="samsung">samsung</option>
+                          <option value="one plus">oneplus</option>
+                           <option value="mi">mi</option>
+                           <option value="nokia">nokia</option>
+                        </select>
+  
+
+                        <label for="lname">Description</label>
+                        <input type="text" id="dsp"  placeholder="Description">
+
+                        <label for="country">Image Link</label>
+                        <input type="text" id="image"  placeholder="Image link">
+                        <label for="country">Price</label>
+                        <input type="number" id="price" n placeholder="Price">
+                        
+                        
+                       
+                      
+                        <button id="submit" class="btn btn-default">Add</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/lib/jquery/dist/jquery.min.js"></script>
+     <script>
+ var product={
+                name :"" ,
+                brand:"",
+                description : "",
+                image:"",
+                
+                price:null 
+                };
+            $("#pname").change(function()
+            {
+               
+                product.name= $("#pname").val();
+            
+            });
+             $("#brand").change(function()
+            {
+                product.brand= $("#brand").val();
+            
+            });
+            
+             $("#dsp").change(function()
+            {
+                product.description= $("#dsp").val();
+            
+            });
+                $("#image").change(function()
+            {
+                product.image= $("#image").val();
+            
+            });
+            
+            
+             $("#price").change(function()
+            {
+                 product.price=undefined;
+                product.price= $("#price").val();
+            
+            });
+            
+            
+            
+            
+            $("#submit").click(function(){
+                $.ajax({
+                    method: "POST",
+                    url: "/api/products",
+                    data: product  
+                    
+                }).done(function(response){
+                    console.log(response);
+                     window.location.replace("/products/all"); 
+                }).fail(function(response){
+                    $("#error").text(JSON.parse(response.responseText).message);
+                   console.log(response); 
+                });
+                
+            });
+ 
+  </script>
+</body>
+
+</html>

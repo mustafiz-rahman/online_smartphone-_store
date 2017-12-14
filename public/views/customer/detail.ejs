@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Polen-Online Mobile Shop</title>
+    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/css/user.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header"><a class="navbar-brand navbar-link" href="/"><i class="glyphicon glyphicon-phone"></i>junglee</a>
+                <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+            </div>
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <ul class="nav navbar-nav navbar-right">
+                    
+                    <li role="presentation"><a href="/about">About us</a></li>
+                    <li role="presentation"><a href="/signin">Login</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="jumbotron hero">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2></h2></div>
+                <div class="col-md-12">
+                     <ul class="nav nav-tabs">
+                        <li><a href="/products/allproduct/apple">Apple</a></li>
+                        <li><a href="/products/allproduct/samsung">Samsung</a></li>
+                        <li><a href="/products/allproduct/oneplus">One Plus</a></li>
+                        <li><a href="/products/allproduct/mi">mi Redmi</a></li>
+                        <li><a href="/products/allproduct/nokia">Nokia</a></li>
+                    </ul>
+                </div>
+                <div  class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title"><%=request.product.name %></h3></div>
+                        <div class="panel-body"><span> </span>
+                            <div id="frm2" class="col-md-10 col-md-offset-1">
+                                <div class="panel panel-default">
+                                    
+                                    <div class="panel-body"><span> </span>
+                                        <div  class="col-md-5 col-md-offset-1"><img class="img-responsive" src=<%=request.product.image %>  width="400" height="600"></div>
+                                        <div  class="col-md-5">
+                                            
+                                            <h2 class="text-right text-primary"><strong><em><%=request.product.name %></em></strong></h2>
+                                            <h3 class="text-right text-warning">Price: <%=request.product.price %> </h3>
+                                            <p class="text-right text-success">Description: </p>
+                                            <p class="text-right"><%=request.product.description %></p>
+                                            <h3 class="text-right">Brand: <%=request.product.brand %> </h3>
+                                            <h2 class="text-right">1 year Warrentty</h2>
+                                            <button id="od" class="btn btn-default" >Shop Now</button>
+                                        </div>
+                                        
+                                        
+                                        
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="frm" class="col-md-5 col-md-offset-3">
+                <div class="panel panel-default">
+               <div class="panel-heading">
+                   
+                            <h3 class="panel-title">Payment Option</h3></div> 
+                <div class="panel panel-default">
+                                    
+                                    <div class="panel-body"><span> </span>
+                                    <img src="https://www.doreservices.state.pa.us/images/credit_lg.jpg" width="400" height="50"/>
+                                    <div class="panel-body"><span></span>
+                        
+                         <label for="fname">Customer Name</label>
+                        <input type="text" id="cname"  placeholder="Customer Name">
+                        
+                        
+  
+
+                        <label for="lname">Adress</label>
+                        <input type="text" id="adress"  placeholder="Adress">
+
+                        <label for="phone">Phone</label>
+                        <input type="text" id="phone"  placeholder="Phone Number">
+                        <label for="Card">Card Number</label>
+                        <input type="text" id="crd"  placeholder="Card Number">
+                        
+                        
+                        
+                        
+                       
+                      
+                        <button id="submit" class="btn btn-default">Pay</button>
+                        
+                        </div>
+                                    </div>
+                
+                </div>
+                </div>                    
+                
+                
+            </div>
+            
+                <div id="frm3" class="col-md-5 col-md-offset-3">
+                
+                 <div class="panel panel-default">
+               <div class="panel-heading">
+                   
+                            <h3 class="panel-title">Payment Option</h3></div>
+                            
+                            <div class="panel panel-default">
+                                    
+                                    <div class="panel-body"><span> </span>
+                                    <h3 class="text-center text-success">Your Payment Has been Successfully!</h3>
+                                    <h6 class="text-center text-success">Your Order ID is +response._id </h6>
+                        </div>
+                        </div>
+            </div>
+                
+            </div>
+            
+            
+            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+    <section class="testimonials"></section>
+    <section class="features">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h2>junglee</h2>
+                    <p>The World's Biggest Online Mobile Shop.<br><br>
+                    Shopping On junglee.com<br>
+                    <br>
+        
+                    Here At junglee.com  We Understand Smartphone, We Understand Our Customers And<br>
+                    We Know What You Want. Our Young And Dynamic Team Of P-OMS Is Committed To<br>
+                    Providing The Latest Handsets On The Best Price Plans So That Everyone Can Love<br>
+                    Their Smartphones As Much As We Love Ours!<br> </p>
+                </div>
+                <div class="col-md-6">
+                    <div class="row icon-features">
+                        <div class="col-xs-4 icon-feature"><i class="glyphicon glyphicon-cloud"></i>
+                            <p>Cloud-ready </p>
+                        </div>
+                        <div class="col-xs-4 icon-feature"><i class="glyphicon glyphicon-piggy-bank"></i>
+                            <p>Saves You Money</p>
+                        </div>
+                        <div class="col-xs-4 icon-feature"><i class="glyphicon glyphicon-fire"></i>
+                            <p>Fire Proof</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="site-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h5>Copyright © 2017 P-OMS. All Rights Reserved</h5></div>
+                <div class="col-sm-6 social-icons"><a href="#"><i class="fa fa-facebook"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-instagram"></i></a></div>
+            </div>
+        </div>
+    </footer>
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
+    
+    <script src="/lib/jquery/dist/jquery.min.js"></script>
+    <script>
+         
+    $("#od").click(function(event) {
+      $("#frm").show();
+      $("#frm2").hide();
+      
+      
+});
+
+
+    var order={
+                cname :"" ,
+                pname :"<%=request.product.name%>" ,
+                photo:"<%=request.product.image%>",
+                adress:"",
+                phone : "",
+                card : "",
+                status:"Not Delivered",
+                price:<%=request.product.price%> 
+                };
+            $("#cname").change(function()
+            {
+               
+                order.cname= $("#cname").val();
+            
+            });
+             $("#pname").change(function()
+            {
+                order.pname= $("#pname").val();
+            
+            });
+            
+             $("#adress").change(function()
+            {
+                order.adress= $("#adress").val();
+            
+            });
+                $("#phone").change(function()
+            {
+                order.phone= $("#phone").val();
+            
+            });
+                 $("#crd").change(function()
+            {
+                order.card= $("#crd").val();
+            
+            });
+            
+             $("#status").change(function()
+            {
+                order.status= $("#status").val();
+            
+            });
+             $("#price").change(function()
+            {
+                 order.price=undefined;
+                order.price= $("#price").val();
+            
+            });
+            
+            
+            
+            
+            $("#submit").click(function(){
+                $.ajax({
+                    method: "POST",
+                    url: "/api/Orders",
+                    data: order  
+                    
+                }).done(function(response){
+                    console.log(response);
+                     $("#frm").hide();
+                     $("#frm3").show();
+                      /*window.location.replace("/");*/
+                }).fail(function(response){
+                    $("#error").text(JSON.parse(response.responseText).message);
+                   console.log(response); 
+                });
+                
+            });
+    
+    
+    
+    </script>
+</body>
+
+</html>

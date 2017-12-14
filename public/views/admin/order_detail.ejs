@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/styles.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header"><a class="navbar-brand navbar-link" href="#">Admin </a>
+                <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+            </div>
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li role="presentation"><a href="#">Polen Ershan</a></li>
+                    <li role="presentation"><a href="/signin">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <ul class="nav nav-tabs">
+                <li><a href="/products/new">Product Add</a></li>
+                <li><a href="/products/all">Product List</a></li>
+                <li><a href="/product/orders/all">Ordered product</a></li>
+            </ul>
+        </div>
+        <div class="col-md-10 col-md-offset-1">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">View Detail</h3></div>
+                <div class="panel-body"><span> </span>
+                    <div class="col-md-6 col-md-offset-3">
+                        <div class="panel panel-default">
+                            
+                            <div class="panel-body"><span> </span>
+
+                                <div>
+         
+        <h3>Order ID:  <%=request.order._id %></h3>
+        <% console.log(request.order)%>
+        <h4>Customer Name: <%=request.order.cname %></h4>
+        <h4>Customer Phone: <%=request.order.phone %></h4>
+        <h4>Customer Adress: <%=request.order.adress %></h4>
+        <h4>Product Name: <%=request.order.pname %></h4>
+        <h4>Bill:  <%=request.order.price %></h4>
+        
+        
+        
+        <p> <%= request.order.content %> </p>
+        
+        <p>
+            <h4>Order Date: <%= request.order.created %></h4> 
+            </p>
+      
+            </p>
+            
+            <label for="Status">Status</label>
+                        <select id="status" name="Status">
+                            <option value =<%=request.order.status%>><%=request.order.status%></option>
+                          <option value="Delivered">Delivered</option>
+                          <option value="Not Delivered">Not Delivered</option>
+                          <option value="Stock Out">Stock Out</option>
+                           <option value="On The Way">On The Way</option>
+                           
+                        </select>
+            <button type=submit id="submit" class="btn btn-default" >Submit</button>
+             <button type=submit id="del" class="btn btn-default" >Delete</button>
+            
+            </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
+     <script>
+     var orderID = <%- JSON.stringify(request.order._id) %>;
+            var order= {};
+             $("#status").change(function()
+            {
+                order.status= $("#status").val();
+            
+            });
+            $("#submit").click(function(){
+                console.log(order);
+                $.ajax({
+                    method: "PUT",
+                    url: '/api/orders/edit/'+orderID,
+                    data: order
+                }).done(function(response){
+                    console.log(response);
+                    window.location.replace("/product/orders/all");
+                }).fail(function(response){
+                 // $("#error").text(JSON.parse(response.responseText).message);
+                    console.log(response);
+                });
+            });
+            $('#del').click(function(){
+                $.ajax({
+                  method:"DELETE",
+                  url:'/api/orders/'+orderID,
+                  data: order
+                }).done(function(response){
+                  console.log(response);
+                  window.location.replace("/product/orders/all");
+                }).fail(function(response){
+                  $("#error").text(JSON.parse(response.responseText).message);
+                    console.log(JSON.parse(response.responseText).message);
+                });
+              });
+    </script>
+</body>
+
+</html>

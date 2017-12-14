@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin</title>
+    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/styles.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header"><a class="navbar-brand navbar-link" href="#">Admin </a>
+                <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+            </div>
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li role="presentation"><a href="#">Polen Ershan</a></li>
+                    <li role="presentation"><a href="/signin">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <ul class="nav nav-tabs">
+                <li><a href="/products/new">Product Add</a></li>
+                <li><a href="/products/all">Product List</a></li>
+                <li><a href="#">Ordered product</a></li>
+            </ul>
+        </div>
+        <div class="col-md-10 col-md-offset-1">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Product Modify</h3></div>
+                <div class="panel-body"><span> </span>
+                    <div class="col-md-5 col-md-offset-1">
+                        <div class="panel panel-default">
+                            
+                            <div class="panel-body"><span> </span>
+
+                         <label for="fname">Product Name</label>
+                        <input type="text" id="pname"  placeholder="Product Name" value=<%=request.product.name%>>
+                        
+                        <label for="country">Brand</label>
+                        <select id="category" name="category" >
+                            <option value =<%=request.product.brand%>><%=request.product.brand%></option>
+                          <option value="apple">apple</option>
+                          <option value="samsung">samsung</option>
+                          <option value="one plus">oneplus</option>
+                           <option value="mi">mi</option>
+                           <option value="nokia">nokia</option>
+                        </select>
+  
+
+                        <label for="lname">Description</label>
+                        <input type="text" id="dsp"  placeholder="Description" value=<%=request.product.description%>>
+
+                        <label for="country">Image Link</label>
+                        <input type="text" id="image"  placeholder="Image link" value=<%=request.product.image%>>
+                        <label for="country">Price</label>
+                        <input type="number" id="price" n placeholder="Price" value=<%=request.product.price%>>
+                       
+                      
+                        <button type=submit id="submit" class="btn btn-default" >Update</button>
+                        <button type=submit id="delete" class="btn btn-default" >Delete</button>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-md-offset-1">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Product Detail</h3></div>
+                            <div class="panel-body"><span> </span>
+                            <div class="col-lg-6 col-md-6"><img src=<%=request.product.image%>   width="250" height="200">
+                    <h5>Name: <%=request.product.name%></h5>
+                    <h5>Description: <%=request.product.description%></h5>
+                    <h5>Brand: <%=request.product.brand%></h5>
+                    <h5>Price: <%=request.product.price%> BDT</h5>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script>
+        
+            var productID = <%- JSON.stringify(request.product._id) %>;
+            var product = {};
+             $("#pname").change(function()
+            {
+               
+                product.name= $("#pname").val();
+            
+            });
+             $("#brand").change(function()
+            {
+                product.brand= $("#brand").val();
+            
+            });
+            
+             $("#dsp").change(function()
+            {
+                product.description= $("#dsp").val();
+            
+            });
+                $("#image").change(function()
+            {
+                product.image= $("#image").val();
+            
+            });
+            
+            
+             $("#price").change(function()
+            {
+                 product.price=undefined;
+                product.price= $("#price").val();
+            
+            });
+            $("#submit").click(function(){
+                console.log(product);
+                $.ajax({
+                    method: "PUT",
+                    url: "/api/products/edit/"+productID,
+                    data: product
+                }).done(function(response){
+                    console.log(response);
+                    window.location.replace("/products/edit/"+response._id);
+                });
+            });
+             $('#delete').click(function(){
+            $.ajax({
+              method:"DELETE",
+              url:'/api/products/'+productID,
+              data: product
+            }).done(function(response){
+              console.log(response);
+              window.location.replace("/products/all");
+            }).fail(function(response){
+              $("#error").text(JSON.parse(response.responseText).message);
+                console.log(JSON.parse(response.responseText).message);
+            });
+          });
+        </script>
+</body>
+
+</html>

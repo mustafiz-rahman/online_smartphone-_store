@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Polen-Online Mobile Shop</title>
+    <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/css/user.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header"><a class="navbar-brand navbar-link" href="/"><i class="glyphicon glyphicon-phone"></i>junglee</a>
+                <button class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+            </div>
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <ul class="nav navbar-nav navbar-right">
+                    
+                    <li role="presentation"><a href="/about">About us</a></li>
+                    <li role="presentation"><a href="/signin">Login</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="jumbotron hero">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2></a></h2></div>
+                <div class="col-md-12">
+                    <ul class="nav nav-tabs">
+                        <li><a href="/products/allproduct/apple">Apple</a></li>
+                        <li><a href="/products/allproduct/samsung">Samsung</a></li>
+                        <li><a href="/products/allproduct/oneplus">One Plus</a></li>
+                        <li><a href="/products/allproduct/mi">mi Redmi</a></li>
+                        <li><a href="/products/allproduct/nokia">Nokia</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <% for(var i=0; i<products.length; i++) { %>
+                        <div class="panel-heading">
+                            <h3 class="panel-title"><%=products[i].brand%> Smart Phone</h3></div>
+                        <div class="panel-body"><span> </span>
+
+                        <% for(var i=0; i<products.length; i++) { %>
+                    <div class="gallery">
+   
+    <img src=<%=products[i].image%> width="500" height="300" >
+  
+  <div class="desc">
+     <h5><%=products[i].name%> </h5>
+      <h6>Price:<%=products[i].price%> BDT</h6>
+      <a href="<%= "/views/" +products[i]._id%>"><button class="button">Details</button></a>
+      <br>
+      <br>
+      
+</div>
+  
+              
+    </div>
+            <%}%>        
+
+                        </div>
+                        <%}%>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1"></div>
+            <div class="col-md-10 col-md-offset-1"></div>
+        </div>
+    </div>
+    <section class="testimonials"></section>
+    <section class="features">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h2>junglee</h2>
+                    <p>The World's Biggest Online Mobile Shop.<br><br>
+                    Shopping On junglee.com<br>
+                    <br>
+        
+                    Here At junglee.com  We Understand Smartphone, We Understand Our Customers And<br>
+                    We Know What You Want. Our Young And Dynamic Team Of P-OMS Is Committed To<br>
+                    Providing The Latest Handsets On The Best Price Plans So That Everyone Can Love<br>
+                    Their Smartphones As Much As We Love Ours!<br> </p>
+                </div>
+                <div class="col-md-6">
+                    <div class="row icon-features">
+                        <div class="col-xs-4 icon-feature"><i class="glyphicon glyphicon-cloud"></i>
+                            <p>Cloud-ready </p>
+                        </div>
+                        <div class="col-xs-4 icon-feature"><i class="glyphicon glyphicon-piggy-bank"></i>
+                            <p>Saves You Money</p>
+                        </div>
+                        <div class="col-xs-4 icon-feature"><i class="glyphicon glyphicon-fire"></i>
+                            <p>Fire Proof</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="site-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h5>Copyright © 2017 P-OMS. All Rights Reserved</h5></div>
+                <div class="col-sm-6 social-icons"><a href="#"><i class="fa fa-facebook"></i></a><a href="#"><i class="fa fa-twitter"></i></a><a href="#"><i class="fa fa-instagram"></i></a></div>
+            </div>
+        </div>
+    </footer>
+    <script src="/assets/js/jquery.min.js"></script>
+    <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
+</body>
+
+</html>
